@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: build
+    runs-on: build-alpine
     steps:
       - run: apk add --no-cache git coreutils
 
