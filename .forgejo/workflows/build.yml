@@ -13,7 +13,7 @@ jobs:
         with:
           submodules: true
 
-      - run: git submodule update --remote --merge
+      - run: git submodule update --remote --force
 
       - run: mkdir -p ~/.ssh
       - run: echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_deploy
