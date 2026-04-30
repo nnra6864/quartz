@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: node-alpine
+    runs-on: node-slim
     steps:
       - run: apk add --no-cache git
 
