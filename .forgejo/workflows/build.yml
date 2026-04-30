@@ -1,7 +1,7 @@
 on:
   push:
   repository_dispatch:
-    types: [vault-updated]
+    types: [vault]
 
 jobs:
   build:
