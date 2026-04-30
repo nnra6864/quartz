@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:22-alpine
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - run: npm ci
+      - run: npx quartz build
+
+      - run: rm -rf /srv/notes/
+      - run: cp -r public/ /srv/notes/
