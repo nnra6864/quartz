@@ -3,7 +3,7 @@ on: [push]
 jobs:
   build:
     runs-on: docker
-    container: node:22-alpine
+    container: node-alpine
     steps:
       - uses: actions/checkout@v3
         with:
