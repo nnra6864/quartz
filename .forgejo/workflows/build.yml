@@ -4,14 +4,17 @@ jobs:
   build:
     runs-on: build-alpine
     steps:
-      - run: apk add --no-cache git coreutils
+      - run: apk add --no-cache git coreutils rsync openssh-client
 
       - uses: actions/checkout@v3
         with:
           submodules: true
 
+      - run: mkdir -p ~/.ssh
+      - run: echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_deploy
+      - run: chmod 600 ~/.ssh/id_deploy
+
       - run: npm ci
       - run: npx quartz build
 
-      - run: rm -rf /srv/notes/
-      - run: cp -r public/ /srv/notes/
+      - run: rsync -avz -e "ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=no" public/ nn@192.168.0.10:.
