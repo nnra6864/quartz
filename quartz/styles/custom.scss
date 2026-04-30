@@ -1,3 +1,8 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+@font-face {
+  font-family: "YourFont";
+  src: url("/static/fonts/MapleMono-NF-CN-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
