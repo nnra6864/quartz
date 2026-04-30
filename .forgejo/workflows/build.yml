@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: build-alpine
+    runs-on: node-alpine
     steps:
       - run: apk add --no-cache git coreutils rsync openssh-client
 
