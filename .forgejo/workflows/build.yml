@@ -1,8 +1,8 @@
 on:
-  push:
+  push: {}
   repository_dispatch:
-    types: [updated]
-
+    types:
+      - updated
 jobs:
   build:
     runs-on: node-alpine
