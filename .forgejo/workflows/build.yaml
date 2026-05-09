@@ -21,4 +21,6 @@ jobs:
       - run: npm ci
       - run: npx quartz build
 
-      - run: rsync -av --inplace -e "ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=no -c aes128-gcm@openssh.com" public/ nn@host.containers.internal:.
+      - run: |
+          HOST=$(ip route | awk '/default/ { print $3; exit }')
+          rsync -av --inplace -e "ssh -i ~/.ssh/id_deploy -o StrictHostKeyChecking=no -c aes128-gcm@openssh.com" public/ nn@$HOST:.
